@@ -1,0 +1,122 @@
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+body{
+    margin: 0;
+    padding : 0;
+    text-align: center;
+    background-color: rgb(20,20,20);
+}
+.text{
+    font-family: 'NanumSquare', sans-serif;
+    color: rgb(233, 233, 233);
+}
+.header h1{
+    text-align: center;
+    font-size : 10vh;
+}
+.main{
+}
+.nav-bar{
+    text-align: center;
+}
+.nav-bar ul{
+    list-style: none;
+    padding-left: 0;
+    font-size: 20px;
+}
+.nav-bar li{
+    margin: 10px;
+    padding: 0 0 0 0;
+    border : 0;
+    display: inline;
+}
+.nav-bar li a{
+    text-decoration: none;
+    color: white;
+}
+input{
+    display: inline;
+    margin-left: 10px;
+    color: rgb(233, 233, 233);
+    height: 3vh;
+    line-height: auto;
+    background: rgb(15,15,15);
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: all 0.2s;
+    word-break: break-all;
+}
+input:focus{
+    height: 5vh;
+    outline: none;
+}
+input:focus.wanttext{
+    text-overflow:clip;
+    word-break:break-all;
+    white-space: pre-line;
+    height: 10vh !important;
+}
+
+label {
+    width: 7vh;
+    display: inline-block;
+    padding: .5em .75em;
+    color: #fff;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: rgb(15,15,15);
+    cursor: pointer;
+    border: 1px solid rgb(15,15,15);
+    border-radius: .25em;
+    -webkit-transition: background-color 0.2s;
+    transition: background-color 0.2s;
+}
+
+label:hover {
+    background-color: rgb(55,55,55);
+}
+
+label:active {
+    background-color: rgb(15,15,15);
+}
+
+input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+input[type="submit"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+#preview img{
+    padding : 15px;
+    height: 30vh;
+    width: 30vh;
+}
+
+.text h4{
+    font-size: 13px;
+    color: rgb(100, 100, 100);
+}
+
+footer{
+    position: fixed;
+    left : 0;
+    bottom : 0;
+    text-align : center;
+    width: 100%;
+    padding-bottom: 15px;
+}
