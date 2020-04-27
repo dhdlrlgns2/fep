@@ -17,8 +17,12 @@ def create(request):
     if request.method == 'POST':
         form = TodoForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return render(request,'complete.html')
+            if(len(request.FILES)!=0):
+                form.save()
+                return render(request,'complete.html')
+            else:
+                form2 = form
+                return render(request,'submit.html', {'form':form})
     else:
         form = TodoForm()
     return render(request,'submit.html', {'form':form})
