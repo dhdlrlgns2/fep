@@ -1,14 +1,43 @@
 {% extends 'base.html' %}
 
 {%block body %}
+<script type="text/javascript">
+    window.onload = function(){
+    var file = document.getElementById('upload');
+    }
+    function imgur() {
+        var target1 = document.getElementById('upload');
+        var xmlHttpRequest = new XMLHttpRequest();
+        
+        xmlHttpRequest.open('POST', 'https://api.imgur.com/3/image/', true);
+        xmlHttpRequest.setRequestHeader("Authorization", "Client-ID b42a552d0d956ff");
+        xmlHttpRequest.onreadystatechange = function () {
+            if (xmlHttpRequest.readyState == 4) {
+                if (xmlHttpRequest.status == 200) {
+                    var result = JSON.parse(xmlHttpRequest.responseText);
+                    console.log(result);
+                    console.log(result.data.link)
+                    var imgur_url = document.getElementById('imgur_url');
+                    imgur_url.value = result.data.link;
+                }
+            else {
+                alert("업로드 실패");
+            }
+        }
+        };
+
+        xmlHttpRequest.send(target1.files[0]);
+    };
+    
+    
+    </script>
+
 <script>
     window.onload = function(){
     var upload = document.getElementById('upload');
     var preview = document.getElementById('preview');
     var preview3 = document.getElementById('nothing');
     preview.appendChild(preview3);
-    console.log(upload)
-    console.log(preview)
     }
     
     function previewImage(){
@@ -32,11 +61,6 @@
         })(image)
 
         if(upload2){
-            /* 
-                get_file[0] 을 읽어서 read 행위가 종료되면 loadend 이벤트가 트리거 되고 
-                onload 에 설정했던 return 으로 넘어간다.
-                이와 함게 base64 인코딩 된 스트링 데이터가 result 속성에 담겨진다.
-            */
             reader.readAsDataURL(upload2);
             console.log(2);
         }
@@ -64,8 +88,8 @@
 
             {{ form.as_p }}
             <label for="sub">Submit</label>
-            <input id = "sub" type="submit" value="Submit">
-            
+            <input id = "sub" type="submit" onclick="imgur()" value="Submit">
+            <input type="hidden" id="imgur_url" name="imgur_url" value="null">
         </form>
     
     </div>
@@ -75,6 +99,7 @@
             <h4>출처를 밝히지 않을시 법적 책임 가능성이 있습니다.</h4>
             <h4>이미지를 포토샵 하는 서비스를 제공하는 사이트기 때문에 수정이 불가능할정도로 깨진 파일은 작업이 불가능합니다.(2차 수정 불가능)</h4>
             <h4>사진 편집 후 원본 수정파일은 따로 보내드리지 않습니다.</h4>
+            <h4>이용자가 많을 경우 하루 편집되는 사진의 수가 제한될 수 있습니다.</h4>
             <br>
             <br>
             <br>

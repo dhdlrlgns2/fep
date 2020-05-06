@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Todo
 from .forms import TodoForm
+from django.utils import timezone
 # Create your views here.
 
 def home(request):
@@ -18,7 +19,11 @@ def create(request):
         form = TodoForm(request.POST, request.FILES)
         if form.is_valid():
             if(len(request.FILES)!=0):
-                form.save()
+                todo = form.save(commit=False)
+                todo.updated_at = timezone.datetime.now()
+                todo.imgur = request.POST['imgur_url']
+                print(todo.imgur)
+                todo.save()
                 return render(request,'complete.html')
             else:
                 form2 = form
